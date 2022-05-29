@@ -8,9 +8,14 @@ const Container = styled.div<{ evenRow: any }>`
   border-radius: 20px;
 `
 const Box = styled.div`
-  padding: 20px 40px 40px;
+  padding: 20px 2rem 40px;
 `
 const Carousel = styled(Slider)`
+  padding: 0 3rem;
+  .slick-prev:before,
+  .slick-next:before {
+    display: none;
+  }
   .slick-dots {
     display: none !important;
   }
@@ -18,16 +23,17 @@ const Carousel = styled(Slider)`
     top: 40%;
   }
   .slick-prev {
-    left: -25px;
+    left: -5px;
   }
   .slick-next {
-    right: -25px;
+    right: -5px;
   }
 `
 const Wrap = styled.div`
   display: flex;
   text-align: center;
   padding: 0 8px;
+  cursor: pointer;
   div {
     position: relative;
     &:before {
@@ -67,7 +73,7 @@ const Wrap = styled.div`
 `
 const Category = styled.h2`
   font-weight: 400;
-  padding: 0 10px;
+  padding-left: 3.5rem;
   font-size: 20px;
   margin-bottom: 14px;
 `
@@ -77,6 +83,31 @@ const MovieTitle = styled.p`
   font-size: 14px;
 `
 
+function SamplePrevArrow(props: any) {
+  const { className, onClick } = props
+  return (
+    <div className={className} onClick={onClick}>
+      <img
+        src={"images/arrow-left-solid.png"}
+        {...props}
+        style={{ width: "50px", height: "50px" }}
+      />
+    </div>
+  )
+}
+function SampleNextArrow(props: any) {
+  const { className, onClick } = props
+  return (
+    <div className={className} onClick={onClick}>
+      <img
+        src={"images/arrow-right-solid.png"}
+        {...props}
+        style={{ width: "50px", height: "50px" }}
+      />
+    </div>
+  )
+}
+
 const MovieRows = ({ evenRow }: any) => {
   const settings = {
     dots: false,
@@ -85,6 +116,8 @@ const MovieRows = ({ evenRow }: any) => {
     slidesToShow: 6,
     slidesToScroll: 4,
     initialSlide: 0,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1024,

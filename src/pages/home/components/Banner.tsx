@@ -68,7 +68,7 @@ const Background = styled.div`
 
 const BackgroundInfo = styled.div`
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: 10%;
 `
 const BannerRating = styled.p`
