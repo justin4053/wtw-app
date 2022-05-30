@@ -2,13 +2,25 @@ import styled from "styled-components"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import { Movie } from "../../../../typings"
+import { thumbnailUrl } from "../../../contents/movie"
+
+interface CustomArrowProps {
+  key?: string
+  "data-role"?: string
+  className?: string
+  style?: React.CSSProperties
+  onClick?: React.MouseEventHandler<any>
+  currentSlide?: number
+  slideCount?: number
+}
 
 const Container = styled.div<{ evenRow: any }>`
   background: ${(props) => (props.evenRow ? "rgba(104, 107, 114, 0.1)" : null)};
   border-radius: 20px;
 `
 const Box = styled.div`
-  padding: 20px 2rem 40px;
+  padding: 2em 2em 4.5em;
 `
 const Carousel = styled(Slider)`
   padding: 0 3rem;
@@ -20,22 +32,26 @@ const Carousel = styled(Slider)`
     display: none !important;
   }
   .slick-arrow {
-    top: 40%;
+    top: 45%;
   }
   .slick-prev {
-    left: -5px;
+    left: -0.4rem;
   }
   .slick-next {
-    right: -5px;
+    right: -0.4rem;
   }
 `
 const Wrap = styled.div`
+  overflow: hidden;
   display: flex;
   text-align: center;
-  padding: 0 8px;
+  padding: 20px;
   cursor: pointer;
+
   div {
+    display: flex;
     position: relative;
+
     &:before {
       content: "";
       position: absolute;
@@ -68,7 +84,9 @@ const Wrap = styled.div`
   }
   img {
     width: 100%;
+    height: 100%;
     border-radius: 8px;
+    object-fit: fill;
   }
 `
 const Category = styled.h2`
@@ -83,7 +101,11 @@ const MovieTitle = styled.p`
   font-size: 14px;
 `
 
-function SamplePrevArrow(props: any) {
+function SamplePrevArrow({
+  currentSlide,
+  slideCount,
+  ...props
+}: CustomArrowProps) {
   const { className, onClick } = props
   return (
     <div className={className} onClick={onClick}>
@@ -95,7 +117,11 @@ function SamplePrevArrow(props: any) {
     </div>
   )
 }
-function SampleNextArrow(props: any) {
+function SampleNextArrow({
+  currentSlide,
+  slideCount,
+  ...props
+}: CustomArrowProps) {
   const { className, onClick } = props
   return (
     <div className={className} onClick={onClick}>
@@ -108,7 +134,8 @@ function SampleNextArrow(props: any) {
   )
 }
 
-const MovieRows = ({ evenRow }: any) => {
+const MovieRows = ({ category, data, isLoading, evenRow }: any) => {
+  console.log(data)
   const settings = {
     dots: false,
     infinite: false,
@@ -120,18 +147,18 @@ const MovieRows = ({ evenRow }: any) => {
     prevArrow: <SamplePrevArrow />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1366,
         settings: {
-          slidesToShow: 6,
+          slidesToShow: 5,
           slidesToScroll: 3,
           infinite: true,
           dots: true
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 988,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 4,
           slidesToScroll: 2,
           initialSlide: 2
         }
@@ -139,7 +166,7 @@ const MovieRows = ({ evenRow }: any) => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 1
         }
       }
@@ -148,57 +175,20 @@ const MovieRows = ({ evenRow }: any) => {
   return (
     <Container evenRow={evenRow}>
       <Box>
-        <Category>熱門電影</Category>
+        <Category>{category}</Category>
         <Carousel {...settings}>
-          <Wrap>
-            <div>
-              <img src="images/banner.jpeg" alt="" />
-              <p>8.3</p>
-            </div>
-            <MovieTitle>殭屍校園</MovieTitle>
-          </Wrap>
-          <Wrap>
-            <div>
-              <img src="images/banner.jpeg" alt="" />
-              <p>8.3</p>
-            </div>
-            <MovieTitle>殭屍校園</MovieTitle>
-          </Wrap>
-          <Wrap>
-            <div>
-              <img src="images/banner.jpeg" alt="" />
-              <p>8.3</p>
-            </div>
-            <MovieTitle>殭屍校園</MovieTitle>
-          </Wrap>
-          <Wrap>
-            <div>
-              <img src="images/banner.jpeg" alt="" />
-              <p>8.3</p>
-            </div>
-            <MovieTitle>殭屍校園</MovieTitle>
-          </Wrap>
-          <Wrap>
-            <div>
-              <img src="images/banner.jpeg" alt="" />
-              <p>8.3</p>
-            </div>
-            <MovieTitle>殭屍校園</MovieTitle>
-          </Wrap>
-          <Wrap>
-            <div>
-              <img src="images/banner.jpeg" alt="" />
-              <p>8.3</p>
-            </div>
-            <MovieTitle>殭屍校園</MovieTitle>
-          </Wrap>
-          <Wrap>
-            <div>
-              <img src="images/banner.jpeg" alt="" />
-              <p>8.3</p>
-            </div>
-            <MovieTitle>殭屍校園</MovieTitle>
-          </Wrap>
+          {!isLoading &&
+            data?.map((movie: any) => (
+              <Wrap key={movie.id}>
+                <div>
+                  <a href="">
+                    <img src={`${thumbnailUrl}${movie.poster_path}`} alt="" />
+                  </a>
+                  <p>{movie.vote_average}</p>
+                </div>
+                <MovieTitle>{movie.name || movie.title}</MovieTitle>
+              </Wrap>
+            ))}
         </Carousel>
       </Box>
     </Container>
