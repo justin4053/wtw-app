@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import Banner from "./components/Banner"
-import MovieRows from "./components/MovieRows"
 import {
   useGetTrendingQuery,
   useGetNetflixOriginalsQuery,
@@ -11,6 +10,8 @@ import {
   useGetRomanceQuery,
   useGetDocumentariesQuery
 } from "../../services/Services"
+import CardList from "../../components/CardList"
+import Card from "../../components/card/Card"
 
 const Container = styled.div`
   min-height: calc(100vh - 58px);
@@ -19,7 +20,7 @@ const Container = styled.div`
 `
 const MoviesContainer = styled.main`
   padding: 0 calc(3.5vw);
-  overflow-x: hidden;
+  margin-top: -6rem;
 `
 const CopyRight = styled.div`
   color: #686b72;
@@ -48,6 +49,7 @@ export const Home = () => {
   const horrorMovies = horrorData?.results
   const romanceMovies = romanceData?.results
   const documentariesMovies = documentariesData?.results
+  console.log(trendingData)
 
   return (
     <Container>
@@ -55,37 +57,45 @@ export const Home = () => {
       <MoviesContainer>
         {!isLoading && (
           <>
-            <MovieRows
+            <CardList
               category="熱門電影"
               data={trendingMovies}
-              evenRow={false}
+              isEvenRow={false}
             />
-            <MovieRows
+            <CardList
               category="Netflix原創電影"
               data={netflixOriginalsMovies}
-              evenRow={true}
+              isEvenRow={true}
             />
-            <MovieRows
+            <CardList
               category="排行榜"
               data={topRatedMovies}
-              evenRow={false}
+              isEvenRow={false}
             />
-            <MovieRows category="動作電影" data={actionMovies} evenRow={true} />
-            <MovieRows
+            <CardList
+              category="動作電影"
+              data={actionMovies}
+              isEvenRow={true}
+            />
+            <CardList
               category="喜劇電影"
               data={comedyMovies}
-              evenRow={false}
+              isEvenRow={false}
             />
-            <MovieRows category="恐怖電影" data={horrorMovies} evenRow={true} />
-            <MovieRows
+            <CardList
+              category="恐怖電影"
+              data={horrorMovies}
+              isEvenRow={true}
+            />
+            <CardList
               category="愛情電影"
               data={romanceMovies}
-              evenRow={false}
+              isEvenRow={false}
             />
-            <MovieRows
+            <CardList
               category="紀錄片"
               data={documentariesMovies}
-              evenRow={true}
+              isEvenRow={true}
             />
           </>
         )}

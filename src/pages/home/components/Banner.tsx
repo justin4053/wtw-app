@@ -3,6 +3,7 @@ import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { ReactNode } from "react"
+import { BtnOutline, BtnSolid } from "../../../components/button/Button"
 
 const Carousel = styled(Slider)`
   position: relative;
@@ -66,7 +67,7 @@ const Background = styled.div`
   height: 100%;
 `
 
-const BackgroundInfo = styled.div`
+const BannerInfo = styled.div`
   position: absolute;
   top: 30%;
   left: 10%;
@@ -83,9 +84,6 @@ const BannerRating = styled.p`
   text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.48);
 `
 const BackgroundTitle = styled.p`
-  color: white;
-  font-family: "Noto Sans SC";
-  font-style: normal;
   font-weight: 500;
   font-size: 76px;
   margin: 0;
@@ -103,32 +101,10 @@ const BannerDesc = styled.p`
 const BannerBtn = styled.div`
   display: flex;
 `
-const BtnComponent = styled.a`
-  width: 160px;
-  height: 42px;
-  margin-right: 22px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 900;
-  border-radius: 13px;
-  cursor: pointer;
-  transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
-  &:hover {
-    transform: scale(1.05);
-  }
-`
 
-const MoreInfoBtn = styled(BtnComponent)`
-  background: linear-gradient(#161616, #161616) padding-box,
-    linear-gradient(45deg, purple, orange) border-box;
-  border: 2px solid transparent;
-`
-const ActionBtn = styled(BtnComponent)`
-  background: linear-gradient(91.47deg, #c10171 3.73%, #5c00f2 100%);
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.48);
-  border: none;
+const BannerMoreInfo = styled(BtnOutline)``
+const BannerAddToList = styled(BtnSolid)`
+  margin-left: 22px;
 `
 
 const Banner = () => {
@@ -161,7 +137,7 @@ const Banner = () => {
         {movies.map((data, index) => (
           <Wrap key={index}>
             <Background>
-              <BackgroundInfo>
+              <BannerInfo>
                 <BannerRating>8.6</BannerRating>
                 <BackgroundTitle>殭屍校園</BackgroundTitle>
                 <BannerDesc>
@@ -170,10 +146,10 @@ const Banner = () => {
                   Beginning》編劇千成日合作打造
                 </BannerDesc>
                 <BannerBtn>
-                  <MoreInfoBtn>更多資訊</MoreInfoBtn>
-                  <ActionBtn>加入片單</ActionBtn>
+                  <BannerMoreInfo>更多資訊</BannerMoreInfo>
+                  <BannerAddToList>加入片單</BannerAddToList>
                 </BannerBtn>
-              </BackgroundInfo>
+              </BannerInfo>
             </Background>
           </Wrap>
         ))}
