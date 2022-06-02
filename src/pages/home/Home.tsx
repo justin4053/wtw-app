@@ -11,7 +11,6 @@ import {
   useGetDocumentariesQuery
 } from "../../services/Services"
 import CardList from "../../components/CardList"
-import Card from "../../components/card/Card"
 
 const Container = styled.div`
   min-height: calc(100vh - 58px);
@@ -49,14 +48,12 @@ export const Home = () => {
   const horrorMovies = horrorData?.results
   const romanceMovies = romanceData?.results
   const documentariesMovies = documentariesData?.results
-  console.log(trendingData)
-
   return (
-    <Container>
-      <Banner />
-      <MoviesContainer>
-        {!isLoading && (
-          <>
+    <>
+      {!isLoading && (
+        <Container>
+          <Banner movies={trendingMovies} />
+          <MoviesContainer>
             <CardList
               category="熱門電影"
               data={trendingMovies}
@@ -97,10 +94,10 @@ export const Home = () => {
               data={documentariesMovies}
               isEvenRow={true}
             />
-          </>
-        )}
-      </MoviesContainer>
-      <CopyRight>挖影 © Code:Justin Kuo / Drsign:K.T</CopyRight>
-    </Container>
+          </MoviesContainer>
+          <CopyRight>挖影 © Code:Justin Kuo / Drsign:K.T</CopyRight>
+        </Container>
+      )}
+    </>
   )
 }

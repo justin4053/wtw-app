@@ -2,6 +2,7 @@ import { useRef, useState } from "react"
 import styled from "styled-components"
 import { thumbnailUrl } from "../contents/movie"
 import Card from "./card/Card"
+import { MainContainer } from "./Layout"
 
 interface Props {
   category: string
@@ -9,9 +10,7 @@ interface Props {
   isEvenRow: boolean
 }
 
-const Container = styled.main`
-  padding: 0 calc(3.5vw);
-`
+const Container = styled(MainContainer)``
 const ComponentBox = styled.div<{ isEvenRow: boolean }>`
   background: ${(props) =>
     props.isEvenRow ? "rgba(104, 107, 114, 0.1)" : null};
@@ -68,7 +67,7 @@ const CardContainer = styled.div`
   }
 `
 
-const MovieList = ({ category, data, isEvenRow }: Props) => {
+const CardList = ({ category, data, isEvenRow }: Props) => {
   const rowRef = useRef<HTMLDivElement>(null)
   const [isMoved, setIsMoved] = useState(false)
   const handleClick = (direction: string) => {
@@ -82,7 +81,6 @@ const MovieList = ({ category, data, isEvenRow }: Props) => {
       rowRef.current.scrollTo({ left: scrollTo, behavior: "smooth" })
     }
   }
-  console.log(rowRef.current)
   return (
     <Container>
       <ComponentBox isEvenRow={isEvenRow}>
@@ -93,7 +91,7 @@ const MovieList = ({ category, data, isEvenRow }: Props) => {
           </ArrowLeftBox>
           <MoviesBox ref={rowRef}>
             {data?.map((movie: any) => (
-              <CardContainer>
+              <CardContainer key={movie.id}>
                 <Card
                   to={`/detail/${movie.id}`}
                   src={`${thumbnailUrl}${movie.poster_path}`}
@@ -112,4 +110,4 @@ const MovieList = ({ category, data, isEvenRow }: Props) => {
   )
 }
 
-export default MovieList
+export default CardList

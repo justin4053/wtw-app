@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { ReactNode } from "react"
 import { BtnOutline, BtnSolid } from "../../../components/button/Button"
+import { thumbnailUrl } from "../../../contents/movie"
 
 const Carousel = styled(Slider)`
   position: relative;
@@ -46,7 +47,7 @@ const Wrap = styled.div`
   width: 100%;
   height: 720px;
 `
-const Background = styled.div`
+const Background = styled.div<{ bgUrl: any }>`
   position: relative;
   background-image: linear-gradient(
       360deg,
@@ -58,7 +59,7 @@ const Background = styled.div`
       rgba(27, 30, 37, 0) 39.58%,
       rgba(27, 30, 37, 0.93) 94.79%
     ),
-    url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/new-project-12-1644230516.jpg?crop=0.492xw:0.984xh;0,0&resize=640:*");
+    url(${(props) => (props.bgUrl ? props.bgUrl : null)});
   background-repeat: no-repeat;
   background-position: top;
   background-attachment: fixed;
@@ -66,6 +67,7 @@ const Background = styled.div`
   width: 100%;
   height: 100%;
 `
+// src={`${thumbnailUrl}${movie.poster_path}`}
 
 const BannerInfo = styled.div`
   position: absolute;
@@ -102,13 +104,20 @@ const BannerBtn = styled.div`
   display: flex;
 `
 
-const BannerMoreInfo = styled(BtnOutline)``
+const BannerMoreInfo = styled(BtnOutline)`
+  &:hover {
+    transform: scale(1.05);
+  }
+`
 const BannerAddToList = styled(BtnSolid)`
   margin-left: 22px;
+  &:hover {
+    transform: scale(1.05);
+  }
 `
 
-const Banner = () => {
-  const movies = Array.from({ length: 10 }, (v, i) => i)
+const Banner = ({ movies }: any) => {
+  const selectMovies = movies.slice(0, 10)
   const settings = {
     dots: true,
     infinite: true,
@@ -134,17 +143,13 @@ const Banner = () => {
   return (
     <>
       <Carousel {...settings}>
-        {movies.map((data, index) => (
-          <Wrap key={index}>
-            <Background>
+        {selectMovies?.map((movie: any) => (
+          <Wrap key={movie.id}>
+            <Background bgUrl={`${thumbnailUrl}${movie.backdrop_path}`}>
               <BannerInfo>
-                <BannerRating>8.6</BannerRating>
-                <BackgroundTitle>殭屍校園</BackgroundTitle>
-                <BannerDesc>
-                  為2022年1月28日上線的Netflix韓國驚悚劇集，由《The King 2
-                  Hearts》導演李在奎與《The Package》、《L.U.C.A.: The
-                  Beginning》編劇千成日合作打造
-                </BannerDesc>
+                <BannerRating>{movie.vote_average}</BannerRating>
+                <BackgroundTitle>{movie.name || movie.title}</BackgroundTitle>
+                <BannerDesc>{movie.overview}</BannerDesc>
                 <BannerBtn>
                   <BannerMoreInfo>更多資訊</BannerMoreInfo>
                   <BannerAddToList>加入片單</BannerAddToList>

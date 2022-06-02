@@ -11,9 +11,6 @@ const Btn = styled.a`
   border-radius: 13px;
   cursor: pointer;
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
-  &:hover {
-    transform: scale(1.05);
-  }
 `
 export const BtnOutline = styled(Btn)`
   background: linear-gradient(#161616, #161616) padding-box,

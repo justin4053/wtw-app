@@ -48,10 +48,25 @@ export const moviesApi = createApi({
                 return requests.fetchDocumentaries
             }
         }),
+        getMovieStreamsById: builder.query<string,string>({
+            query: (id) => {
+                return requests.fetchMovieStreamsById(id)
+            }
+        }),
+        getMovieDetailById: builder.query<string,string>({
+            query: (id) => {
+                return requests.fetchMovieDetailById(id)
+            }
+        }),
+        getMovieCastAndCrewById: builder.query<string,string>({
+            query: (id) => {
+                return requests.fetchMovieCastAndCrewById(id)
+            }
+        })
     }),
 })
 
 export const {
     useGetTrendingQuery,
-    useGetNetflixOriginalsQuery,useGetTopRatedQuery,useGetActionQuery,useGetComedyQuery,useGetHorrorQuery,useGetRomanceQuery,useGetDocumentariesQuery } = moviesApi
+    useGetNetflixOriginalsQuery,useGetTopRatedQuery,useGetActionQuery,useGetComedyQuery,useGetHorrorQuery,useGetRomanceQuery,useGetDocumentariesQuery,useGetMovieStreamsByIdQuery,useGetMovieDetailByIdQuery,useGetMovieCastAndCrewByIdQuery } = moviesApi
 export const moviesApiReducer = moviesApi.reducer

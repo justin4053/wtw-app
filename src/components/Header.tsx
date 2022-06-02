@@ -12,6 +12,7 @@ const Nav = styled.nav<{ isScrolled: boolean }>`
   padding: 0 40px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.48);
   position: fixed;
+  top: 0;
   z-index: 1;
 `
 const Logo = styled.img`
