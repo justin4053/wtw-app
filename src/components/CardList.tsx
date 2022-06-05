@@ -2,15 +2,12 @@ import { useRef, useState } from "react"
 import styled from "styled-components"
 import { thumbnailUrl } from "../contents/movie"
 import Card from "./card/Card"
-import { MainContainer } from "./Layout"
 
 interface Props {
   category: string
   data: any
   isEvenRow: boolean
 }
-
-const Container = styled(MainContainer)``
 const ComponentBox = styled.div<{ isEvenRow: boolean }>`
   background: ${(props) =>
     props.isEvenRow ? "rgba(104, 107, 114, 0.1)" : null};
@@ -82,7 +79,7 @@ const CardList = ({ category, data, isEvenRow }: Props) => {
     }
   }
   return (
-    <Container>
+
       <ComponentBox isEvenRow={isEvenRow}>
         <InnerBox>
           <Title>{category}</Title>
@@ -106,7 +103,6 @@ const CardList = ({ category, data, isEvenRow }: Props) => {
           </ArrowRightBox>
         </InnerBox>
       </ComponentBox>
-    </Container>
   )
 }
 

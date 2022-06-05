@@ -4,7 +4,7 @@ import { thumbnailUrl } from "../../../contents/movie"
 
 const CastBox = styled(BasicBox)`
   height: 136px;
-  margin-top: 47px;
+  margin-top: 12px;
 `
 const InnerBox = styled.div`
   width: 100%;

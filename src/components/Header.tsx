@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 const Nav = styled.nav<{ isScrolled: boolean }>`
   background: ${(props) =>
@@ -15,8 +16,13 @@ const Nav = styled.nav<{ isScrolled: boolean }>`
   top: 0;
   z-index: 1;
 `
+const LogoBox = styled.div`
+  display: flex;
+  align-items: center;
+`
 const Logo = styled.img`
   width: 38px;
+  height:38px;
 `
 const Title = styled.p`
   min-width: 54px;
@@ -115,8 +121,12 @@ const Header = () => {
   return (
     <Nav isScrolled={isScrolled}>
       {/* Nav Left */}
-      <Logo src="/images/Logo.png" />
-      <Title>挖！影</Title>
+      <Link to={'/'}>
+        <LogoBox>
+          <Logo src="/images/Logo.png" />
+          <Title>挖！影</Title>
+        </LogoBox>
+      </Link>
       <Search>
         <img src="/images/magnifier.png" alt="" />
         <input type="text" placeholder="搜尋劇名 / 演員" />

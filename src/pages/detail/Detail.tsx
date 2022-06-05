@@ -7,6 +7,7 @@ import {
   useGetMovieStreamsByIdQuery
 } from "../../services/Services"
 import MovieCast from "./components/MovieCast"
+import MovieRecommendations from "./components/MovieRecommendations"
 
 // TODO : 直接以電影id去搜尋整部資訊 更新redux
 
@@ -29,6 +30,7 @@ const Detail = () => {
           {/* Cast List */}
           <MovieCast peopleData={moviePeopleData} />
           {/* Recommendations */}
+          <MovieRecommendations />
           {/* Similar Movies */}
         </Container>
       )}
