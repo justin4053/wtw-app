@@ -42,13 +42,22 @@ const CastCard = styled.div`
 `
 // TODO: 增加peopleData的type
 const MovieCast = ({ peopleData }: any) => {
+  console.log(peopleData)
   return (
     <CastBox>
       <InnerBox>
         <CardContainer>
           {peopleData.cast.map((peopleData: any) => (
             <CastCard key={peopleData.id}>
-              <img src={`${thumbnailUrl}${peopleData.profile_path}`} alt="" />
+              {peopleData.profile_path ? (
+                <img src={`${thumbnailUrl}${peopleData.profile_path}`} alt="" />
+              ) : (
+                <img
+                  src="http://d.ifengimg.com/mw604/y0.ifengimg.com/ifengimcp/pic/20160418/5628dd6ecd9fa100f371_size30_w521_h534.jpg"
+                  alt=""
+                />
+              )}
+
               <p>{peopleData.name}</p>
             </CastCard>
           ))}

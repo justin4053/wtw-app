@@ -21,8 +21,8 @@ const DetailVideo = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.48));
     border-radius: 20px;
+    filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.48));
   }
 `
 const DetailInfo = styled.div`

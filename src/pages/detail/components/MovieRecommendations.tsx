@@ -9,12 +9,12 @@ const MyReco = styled.div``
 const OthersReco = styled.div``
 
 const MovieRecommendations = () => {
-    return (
-        <RecommendationsBox>
-            <MyReco></MyReco>
-            <OthersReco></OthersReco>
-        </RecommendationsBox>
-    )
+  return (
+    <RecommendationsBox>
+      <MyReco></MyReco>
+      <OthersReco></OthersReco>
+    </RecommendationsBox>
+  )
 }
 
 export default MovieRecommendations
