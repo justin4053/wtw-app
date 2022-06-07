@@ -114,40 +114,40 @@ const MovieDetail = ({ movieData, peopleData }: any) => {
       {/* Right */}
       <DetailInfo>
         <GenresBox>
-          {movieData.genres.map((genre: genreProps) => (
+          {movieData?.genres.map((genre: genreProps) => (
             <p key={genre.id}>{genre.name}</p>
           ))}
         </GenresBox>
         {/* Movie Title */}
         <MovieBox>
-          <MovieTitle>{movieData.title}</MovieTitle>
-          <MovieRating>{movieData.vote_average}</MovieRating>
+          <MovieTitle>{movieData?.title}</MovieTitle>
+          <MovieRating>{movieData?.vote_average}</MovieRating>
         </MovieBox>
         {/* Movie Info */}
         <LargeInfoBox>
           <MiddleInfoBox>
             <SmallInfoBox isRainbowBar>
               <div></div>
-              <span>{movieData.release_date}</span>
+              <span>{movieData?.release_date}</span>
             </SmallInfoBox>
             <SmallInfoBox isRainbowBar>
               <div></div>
               <span>
-                {languagesTranslator(movieData.original_language) ||
+                {languagesTranslator(movieData?.original_language) ||
                   movieData.original_language}
               </span>
             </SmallInfoBox>
             <SmallInfoBox isRainbowBar>
               <div></div>
               <span>
-                {Math.floor(movieData.runtime / 60)}小時{" "}
-                {Math.floor(movieData.runtime % 60)}分鐘
+                {Math.floor(movieData?.runtime / 60)}小時{" "}
+                {Math.floor(movieData?.runtime % 60)}分鐘
               </span>
             </SmallInfoBox>
           </MiddleInfoBox>
           <SmallInfoBox isRainbowBar>
             <div></div>
-            <span>導演 {peopleData.crew[0].name}</span>
+            <span>導演 {peopleData?.crew[0].name}</span>
           </SmallInfoBox>
           <SmallInfoBox isRainbowBar>
             <div></div>

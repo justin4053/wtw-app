@@ -149,9 +149,9 @@ const CardList = ({ category, data, isEvenRow }: Props) => {
             <CardContainer key={movie.id}>
               <Card
                 to={`/detail/${movie.id}`}
-                src={`${thumbnailUrl}${movie.poster_path}`}
+                src={`${thumbnailUrl}${movie?.poster_path}`}
                 rating={movie.vote_average}
-                name={movie.name || movie.title}
+                name={movie?.name || movie?.title}
                 isSamllPic={isEvenRow}
               />
             </CardContainer>
