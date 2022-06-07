@@ -118,20 +118,21 @@ const CardList = ({ category, data, isEvenRow, isOneRow }: Props) => {
   const [isMoved, setIsMoved] = useState(false)
   const [selectData, setSelectData] = useState(data)
   // 判斷Device類型去切割Data數目(不同)
-  const useData = () => {
+
+  const NewData = () => {
     if (window.innerWidth > 768) {
       setSelectData(data)
     } else if (window.innerWidth > 390) {
-      setSelectData(data?.slice(0, 10))
+      setSelectData(data.slice(0, 10))
     } else {
-      setSelectData(data?.slice(0, 6))
+      setSelectData(data.slice(0, 6))
     }
   }
-
   useEffect(() => {
-    window.addEventListener("resize", useData)
+    NewData()
+    window.addEventListener("resize", NewData)
     return () => {
-      window.removeEventListener("resize", useData)
+      window.removeEventListener("resize", NewData)
     }
   }, [])
 
