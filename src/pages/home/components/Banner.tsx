@@ -97,15 +97,12 @@ const Background = styled.div<{ bgUrl: any }>`
       rgba(27, 30, 37, 0) 39.58%,
       rgba(27, 30, 37, 0.93) 94.79%
     ),
-    url(${(props) => (props.bgUrl ? props.bgUrl : null)});
+    url(${(props) => (props.bgUrl ? props.bgUrl : "null")});
   background-repeat: no-repeat;
   background-position: top;
   background-attachment: fixed;
-  background-size: cover;
-  width: 100%;
-  height: 100%;
+  background-size: cover; ;
 `
-// src={`${thumbnailUrl}${movie.poster_path}`}
 
 const BannerInfo = styled.div`
   position: absolute;
