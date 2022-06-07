@@ -101,7 +101,7 @@ const Background = styled.div<{ bgUrl: any }>`
   background-repeat: no-repeat;
   background-position: top;
   background-attachment: fixed;
-  background-size: cover;
+  /* background-size: fill; */
   width: 100%;
   height: 100%;
 `
