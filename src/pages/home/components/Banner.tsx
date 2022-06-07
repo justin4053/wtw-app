@@ -100,7 +100,7 @@ const Background = styled.div<{ bgUrl: any }>`
     url(${(props) => props.bgUrl});
   background-repeat: no-repeat;
   background-position: top;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   /* background-size: fill; */
   width: 100%;
   height: 100%;
