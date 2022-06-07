@@ -1,10 +1,11 @@
 import styled from "styled-components"
+import { BtnSolid } from "../../../components/button/Button"
 import { BasicBox } from "../../../components/Layout"
 import { languagesTranslator } from "../../../contents/languages"
 import { thumbnailUrl } from "../../../contents/movie"
+import { MEDIA_QUERY_MD, MEDIA_QUERY_SM } from "../../../contents/style"
 
 // Interface
-interface Props {}
 interface genreProps {
   id: string
   name: string
@@ -12,11 +13,20 @@ interface genreProps {
 
 // Style components
 const DetailBox = styled(BasicBox)`
-  height: 470px;
+  display: flex;
+  width: 100%;
+
+  ${MEDIA_QUERY_MD} {
+    border-radius: 0;
+  }
+
+  ${MEDIA_QUERY_SM} {
+    padding: 0;
+    flex-direction: column;
+    background: transparent;
+  }
 `
 const DetailVideo = styled.div`
-  width: 323px;
-  height: 100%;
   img {
     width: 100%;
     height: 100%;
@@ -24,31 +34,73 @@ const DetailVideo = styled.div`
     border-radius: 20px;
     filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.48));
   }
+  ${MEDIA_QUERY_SM} {
+    img {
+      display: none;
+    }
+  }
 `
+
 const DetailInfo = styled.div`
   margin-left: 35px;
   flex: 1;
 `
+
 const GenresBox = styled.div`
   display: flex;
+  align-items: center;
 
-  p {
-    background: #161616;
-    padding: 10px;
-    border: 0.6px solid #ffffff;
-    border-radius: 4px;
-    margin-right: 10px;
+  div {
+    display: flex;
+    flex: 1;
+
+    p {
+      background: #161616;
+      padding: 8px;
+      border: 0.6px solid #ffffff;
+      border-radius: 4px;
+      margin-right: 10px;
+      font-family: "Noto Sans TC";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+    }
+  }
+`
+
+const BtnMDBox = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  ${MEDIA_QUERY_SM} {
+    display: none !important;
+  }
+`
+
+const DetailBtn = styled(BtnSolid)`
+  ${MEDIA_QUERY_SM} {
+    width: 103px;
+    height: 27px;
+    margin-top: 8px;
   }
 `
 
 const MovieBox = styled.div`
   display: flex;
   align-items: center;
+
+  ${MEDIA_QUERY_SM} {
+    display: none;
+  }
 `
 const MovieTitle = styled.div`
   font-family: "Noto Sans";
   font-weight: 500;
   font-size: 38px;
+
+  ${MEDIA_QUERY_SM} {
+    font-size: 25px;
+  }
 `
 const MovieRating = styled.div`
   font-family: "Roboto";
@@ -61,6 +113,11 @@ const MovieRating = styled.div`
   background-clip: text;
   text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.48);
   margin-left: 18px;
+
+  ${MEDIA_QUERY_SM} {
+    margin: 0;
+    font-size: 33px;
+  }
 `
 const LargeInfoBox = styled.div``
 const MiddleInfoBox = styled.div`
@@ -97,7 +154,14 @@ const SmallInfoBox = styled.div<{ isRainbowBar: boolean }>`
       height: 36px;
     }
   }
+
+  ${MEDIA_QUERY_MD} {
+    span {
+      -webkit-line-clamp: 2;
+    }
+  }
 `
+
 //TODO : 把any換掉
 const MovieDetail = ({ movieData, peopleData }: any) => {
   return (
@@ -114,9 +178,15 @@ const MovieDetail = ({ movieData, peopleData }: any) => {
       {/* Right */}
       <DetailInfo>
         <GenresBox>
-          {movieData?.genres.map((genre: genreProps) => (
-            <p key={genre.id}>{genre.name}</p>
-          ))}
+          <div>
+            {movieData?.genres.map((genre: genreProps) => (
+              <p key={genre?.id}>{genre?.name}</p>
+            ))}
+          </div>
+          {/* 加入片單 */}
+          <BtnMDBox>
+            <DetailBtn>加入片單</DetailBtn>
+          </BtnMDBox>
         </GenresBox>
         {/* Movie Title */}
         <MovieBox>
@@ -134,7 +204,7 @@ const MovieDetail = ({ movieData, peopleData }: any) => {
               <div></div>
               <span>
                 {languagesTranslator(movieData?.original_language) ||
-                  movieData.original_language}
+                  movieData?.original_language}
               </span>
             </SmallInfoBox>
             <SmallInfoBox isRainbowBar>
@@ -155,7 +225,7 @@ const MovieDetail = ({ movieData, peopleData }: any) => {
           </SmallInfoBox>
           <SmallInfoBox isRainbowBar={false}>
             <div></div>
-            <span>{movieData.overview}</span>
+            <span>{movieData?.overview}</span>
           </SmallInfoBox>
           <SmallInfoBox isRainbowBar>
             <div></div>

@@ -64,41 +64,49 @@ export const Home = () => {
               category="熱門電影"
               data={trendingMovies}
               isEvenRow={false}
+              isOneRow={false}
             />
             <CardList
               category="Netflix原創電影"
               data={netflixOriginalsMovies}
               isEvenRow={true}
+              isOneRow={false}
             />
             <CardList
               category="排行榜"
               data={topRatedMovies}
               isEvenRow={false}
+              isOneRow={false}
             />
             <CardList
               category="動作電影"
               data={actionMovies}
               isEvenRow={true}
+              isOneRow={false}
             />
             <CardList
               category="喜劇電影"
               data={comedyMovies}
               isEvenRow={false}
+              isOneRow={false}
             />
             <CardList
               category="恐怖電影"
               data={horrorMovies}
               isEvenRow={true}
+              isOneRow={false}
             />
             <CardList
               category="愛情電影"
               data={romanceMovies}
               isEvenRow={false}
+              isOneRow={false}
             />
             <CardList
               category="紀錄片"
               data={documentariesMovies}
               isEvenRow={true}
+              isOneRow={false}
             />
           </MoviesContainer>
           <CopyRight>挖影 © Code:Justin Kuo / Drsign:K.T</CopyRight>

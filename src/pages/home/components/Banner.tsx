@@ -236,12 +236,12 @@ const Banner = ({ movies }: any) => {
     <>
       <Carousel {...settings}>
         {selectMovies?.map((movie: any) => (
-          <Wrap key={movie.id}>
-            <Background bgUrl={`${thumbnailUrl}${movie.backdrop_path}`}>
+          <Wrap key={movie?.id}>
+            <Background bgUrl={`${thumbnailUrl}${movie?.backdrop_path}`}>
               <BannerInfo>
-                <BannerRating>{movie.vote_average}</BannerRating>
-                <BannerTitle>{movie.name || movie.title}</BannerTitle>
-                <BannerDesc>{movie.overview}</BannerDesc>
+                <BannerRating>{movie?.vote_average}</BannerRating>
+                <BannerTitle>{movie?.name || movie.title}</BannerTitle>
+                <BannerDesc>{movie?.overview}</BannerDesc>
                 <BannerBtn>
                   <BannerMoreInfo>更多資訊</BannerMoreInfo>
                   <BannerAddToList>加入片單</BannerAddToList>

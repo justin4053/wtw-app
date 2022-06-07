@@ -1,13 +1,19 @@
 import { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { thumbnailUrl } from "../contents/movie"
-import { MEDIA_QUERY_MD } from "../contents/style"
+import { MEDIA_QUERY_MD, MEDIA_QUERY_SM } from "../contents/style"
 import Card from "./card/Card"
 
 interface Props {
   category: string
   data: any
   isEvenRow: boolean
+  isOneRow: boolean
+}
+
+interface MoviesBoxProps {
+  isEvenRow: boolean
+  isOneRow: boolean
 }
 
 // Styled Components
@@ -33,7 +39,7 @@ const InnerBox = styled.div<{ isEvenRow: boolean }>`
   }
 `
 
-const MoviesBox = styled.div<{ isEvenRow: boolean }>`
+const MoviesBox = styled.div<MoviesBoxProps>`
   display: flex;
   margin: 8px 6.5em 0px;
   overflow-x: scroll;
@@ -44,15 +50,19 @@ const MoviesBox = styled.div<{ isEvenRow: boolean }>`
 
   ${MEDIA_QUERY_MD} {
     margin: 0px;
-    flex-wrap: ${(props) => (props.isEvenRow ? "wrap" : null)};
-    display: ${(props) => (props.isEvenRow ? "grid" : "flex")};
+    flex-wrap: ${(props) =>
+      props.isOneRow ? "nowrap" : props.isEvenRow ? "wrap" : null};
+    display: ${(props) =>
+      props.isOneRow ? "flex" : props.isEvenRow ? "grid" : "flex"};
     grid-template-columns: repeat(5, 1fr);
   }
 
-  @media screen and (max-width: 360px) {
+  ${MEDIA_QUERY_SM} {
     margin: 0px;
-    flex-wrap: ${(props) => (props.isEvenRow ? "wrap" : null)};
-    display: ${(props) => (props.isEvenRow ? "grid" : "flex")};
+    flex-wrap: ${(props) =>
+      props.isOneRow ? "nowrap" : props.isEvenRow ? "wrap" : null};
+    display: ${(props) =>
+      props.isOneRow ? "flex" : props.isEvenRow ? "grid" : "flex"};
     grid-template-columns: repeat(3, 1fr);
   }
 `
@@ -103,11 +113,10 @@ const CardContainer = styled.div`
   }
 `
 
-const CardList = ({ category, data, isEvenRow }: Props) => {
+const CardList = ({ category, data, isEvenRow, isOneRow }: Props) => {
   const rowRef = useRef<HTMLDivElement>(null)
   const [isMoved, setIsMoved] = useState(false)
   const [selectData, setSelectData] = useState(data)
-
   // 判斷Device類型去切割Data數目(不同)
   const useData = () => {
     if (window.innerWidth > 768) {
@@ -142,23 +151,24 @@ const CardList = ({ category, data, isEvenRow }: Props) => {
       <InnerBox isEvenRow={isEvenRow}>
         <Title>{category}</Title>
         <ArrowLeftBox onClick={() => handleClick("left")}>
-          <img src="images/arrow-left-solid.png" alt="" />
+          <img src="/images/arrow-left-solid.png" alt="" />
         </ArrowLeftBox>
-        <MoviesBox ref={rowRef} isEvenRow={isEvenRow}>
+        <MoviesBox ref={rowRef} isEvenRow={isEvenRow} isOneRow={isOneRow}>
           {selectData?.map((movie: any) => (
             <CardContainer key={movie.id}>
               <Card
                 to={`/detail/${movie.id}`}
                 src={`${thumbnailUrl}${movie?.poster_path}`}
-                rating={movie.vote_average}
+                rating={movie?.vote_average}
                 name={movie?.name || movie?.title}
                 isSamllPic={isEvenRow}
+                isOneRow={isOneRow}
               />
             </CardContainer>
           ))}
         </MoviesBox>
         <ArrowRightBox onClick={() => handleClick("right")}>
-          <img src="images/arrow-right-solid.png" alt="" />
+          <img src="/images/arrow-right-solid.png" alt="" />
         </ArrowRightBox>
       </InnerBox>
     </ComponentBox>

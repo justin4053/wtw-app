@@ -8,6 +8,7 @@ interface CardProps {
   name: string
   to: string
   isSamllPic: boolean
+  isOneRow: boolean
 }
 
 const CardWrap = styled.div<{ isSamllPic: boolean }>`
@@ -82,7 +83,7 @@ const CardName = styled.div`
   color: white;
 `
 
-const Card = ({ src, rating, name, to, isSamllPic }: CardProps) => {
+const Card = ({ src, rating, name, to, isSamllPic, isOneRow }: CardProps) => {
   return (
     <CardWrap isSamllPic={isSamllPic}>
       <Link to={to}>

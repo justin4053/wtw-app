@@ -1,10 +1,16 @@
 import styled from "styled-components"
 import { BasicBox } from "../../../components/Layout"
 import { thumbnailUrl } from "../../../contents/movie"
+import { MEDIA_QUERY_MD } from "../../../contents/style"
 
 const CastBox = styled(BasicBox)`
   height: 136px;
-  margin-top: 12px;
+  margin-top: 18px;
+
+  ${MEDIA_QUERY_MD} {
+    border-radius: 0;
+    margin-bottom: 20px;
+  }
 `
 const InnerBox = styled.div`
   width: 100%;

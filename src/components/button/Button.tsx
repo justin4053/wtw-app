@@ -17,6 +17,8 @@ const Btn = styled.a`
     width: 140px;
   }
   ${MEDIA_QUERY_SM} {
+    border-radius: 8px;
+    font-size: 14px;
     width: 103px;
     height: 27px;
   }
