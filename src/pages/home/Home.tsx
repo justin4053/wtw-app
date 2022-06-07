@@ -12,6 +12,7 @@ import {
 } from "../../services/Services"
 import CardList from "../../components/CardList"
 import { MEDIA_QUERY_MD } from "../../contents/style"
+import { useEffect } from "react"
 
 const Container = styled.div`
   min-height: calc(100vh - 58px);
@@ -46,6 +47,7 @@ export const Home = () => {
   const { data: horrorData } = useGetHorrorQuery()
   const { data: romanceData } = useGetRomanceQuery()
   const { data: documentariesData, isLoading } = useGetDocumentariesQuery()
+
   const trendingMovies = trendingData?.results
   const netflixOriginalsMovies = netflixOriginalsData?.results
   const topRatedMovies = topRatedData?.results
@@ -54,6 +56,8 @@ export const Home = () => {
   const horrorMovies = horrorData?.results
   const romanceMovies = romanceData?.results
   const documentariesMovies = documentariesData?.results
+
+  useEffect(() => {}, [isLoading])
   return (
     <>
       {!isLoading && (
