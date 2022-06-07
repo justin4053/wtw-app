@@ -120,9 +120,9 @@ const CardList = ({ category, data, isEvenRow, isOneRow }: Props) => {
   // 判斷Device類型去切割Data數目(不同)
 
   const NewData = () => {
-    if (window.innerWidth < 428 && isEvenRow) {
+    if (window.innerWidth <= 428 && isEvenRow) {
       setSelectData(data?.slice(0, 6))
-    } else if (window.innerWidth < 768 && isEvenRow) {
+    } else if (window.innerWidth <= 768 && isEvenRow) {
       setSelectData(data?.slice(0, 10))
     } else {
       setSelectData(data)
