@@ -97,11 +97,13 @@ const Background = styled.div<{ bgUrl: any }>`
       rgba(27, 30, 37, 0) 39.58%,
       rgba(27, 30, 37, 0.93) 94.79%
     ),
-    url(${(props) => (props.bgUrl ? props.bgUrl : "null")});
+    url(${(props) => props.bgUrl});
   background-repeat: no-repeat;
   background-position: top;
   background-attachment: fixed;
-  background-size: cover; ;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
 `
 
 const BannerInfo = styled.div`
@@ -238,7 +240,7 @@ const Banner = ({ movies }: any) => {
               <BannerInfo>
                 <BannerRating>{movie?.vote_average}</BannerRating>
                 <BannerTitle>{movie?.name || movie.title}</BannerTitle>
-                <BannerDesc>{movie?.overview}</BannerDesc>
+                <BannerDesc>{movie.overview}</BannerDesc>
                 <BannerBtn>
                   <BannerMoreInfo>更多資訊</BannerMoreInfo>
                   <BannerAddToList>加入片單</BannerAddToList>
