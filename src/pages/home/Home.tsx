@@ -11,6 +11,7 @@ import {
   useGetDocumentariesQuery
 } from "../../services/Services"
 import CardList from "../../components/CardList"
+import { MEDIA_QUERY_MD } from "../../contents/style"
 
 const Container = styled.div`
   min-height: calc(100vh - 58px);
@@ -20,6 +21,11 @@ const Container = styled.div`
 const MoviesContainer = styled.main`
   padding: 0 calc(3.5vw);
   margin-top: -6rem;
+
+  ${MEDIA_QUERY_MD} {
+    padding: 0;
+    margin-top: -3rem;
+  }
 `
 const CopyRight = styled.div`
   color: #686b72;

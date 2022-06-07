@@ -106,7 +106,7 @@ const MovieDetail = ({ movieData, peopleData }: any) => {
       <DetailVideo>
         <img
           src={`${thumbnailUrl}${
-            movieData.poster_path || movieData.backdrop_path
+            movieData?.poster_path || movieData?.backdrop_path
           }`}
           alt=""
         />

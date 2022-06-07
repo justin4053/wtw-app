@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { MEDIA_QUERY_MD, MEDIA_QUERY_SM } from "../contents/style"
+import Menu from "./menu/Menu"
 
 const Nav = styled.nav<{ isScrolled: boolean }>`
   background: ${(props) =>
@@ -14,7 +16,15 @@ const Nav = styled.nav<{ isScrolled: boolean }>`
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.48);
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 999;
+
+  ${MEDIA_QUERY_MD} {
+    padding: 0 24px;
+  }
+
+  ${MEDIA_QUERY_SM} {
+    padding: 0 16px;
+  }
 `
 const LogoBox = styled.div`
   display: flex;
@@ -22,7 +32,7 @@ const LogoBox = styled.div`
 `
 const Logo = styled.img`
   width: 38px;
-  height:38px;
+  height: 38px;
 `
 const Title = styled.p`
   min-width: 54px;
@@ -33,6 +43,10 @@ const Title = styled.p`
   line-height: 27px;
   color: #ffffff;
   text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.48);
+
+  ${MEDIA_QUERY_SM} {
+    font-size: 16px;
+  }
 `
 const Search = styled.div`
   margin-left: 20px;
@@ -57,51 +71,6 @@ const Search = styled.div`
     font-size: 14px;
   }
 `
-const NavMenu = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  div {
-    width: 77px;
-    height: 24px;
-    margin-right: 7px;
-    text-align: center;
-    cursor: pointer;
-    position: relative;
-    a {
-      text-decoration: none;
-      &:after {
-        content: "";
-        height: 5px;
-        background: linear-gradient(91.47deg, #c10171 3.73%, #5c00f2 100%);
-        border-radius: 50px;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -16px;
-        opacity: 1;
-        transform-origin: left center;
-        transform: scaleX(0);
-        transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
-      }
-      span {
-        color: white;
-      }
-    }
-    &:hover {
-      a:after {
-        transform: scaleX(1);
-        opacity: 1;
-      }
-    }
-  }
-`
-const UserImg = styled.img`
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  cursor: pointer;
-`
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -121,7 +90,7 @@ const Header = () => {
   return (
     <Nav isScrolled={isScrolled}>
       {/* Nav Left */}
-      <Link to={'/'}>
+      <Link to={"/"}>
         <LogoBox>
           <Logo src="/images/Logo.png" />
           <Title>挖！影</Title>
@@ -132,29 +101,7 @@ const Header = () => {
         <input type="text" placeholder="搜尋劇名 / 演員" />
       </Search>
       {/* Nav Right */}
-      <NavMenu>
-        <div>
-          <a>
-            <span>電影</span>
-          </a>
-        </div>
-        <div>
-          <a>
-            <span>戲劇</span>
-          </a>
-        </div>
-        <div>
-          <a>
-            <span>主題館</span>
-          </a>
-        </div>
-        <div>
-          <a>
-            <span>我的片單</span>
-          </a>
-        </div>
-      </NavMenu>
-      <UserImg src="/images/title-profile-pc.png" />
+      <Menu position={"header"} />
     </Nav>
   )
 }
