@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { MEDIA_QUERY_MD, MEDIA_QUERY_SM } from "../../contents/style"
 
-const Btn = styled.a`
+const Btn = styled.div`
   width: 160px;
   height: 42px;
   display: flex;

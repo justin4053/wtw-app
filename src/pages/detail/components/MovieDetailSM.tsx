@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { BtnSolid } from "../../../components/button/Button"
-import { thumbnailUrl } from "../../../contents/movie"
+import { thumbnailUrl } from "../../../contents/movieUrl"
 import { MEDIA_QUERY_SM } from "../../../contents/style"
 
 const DetailBackGround = styled.div<{ bgUrl: any }>`

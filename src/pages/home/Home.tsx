@@ -48,67 +48,58 @@ export const Home = () => {
   const { data: romanceData } = useGetRomanceQuery()
   const { data: documentariesData, isLoading } = useGetDocumentariesQuery()
 
-  const trendingMovies = trendingData?.results
-  const netflixOriginalsMovies = netflixOriginalsData?.results
-  const topRatedMovies = topRatedData?.results
-  const actionMovies = actionData?.results
-  const comedyMovies = comedyData?.results
-  const horrorMovies = horrorData?.results
-  const romanceMovies = romanceData?.results
-  const documentariesMovies = documentariesData?.results
-
   useEffect(() => {}, [isLoading])
   return (
     <>
       {!isLoading && (
         <Container>
-          <Banner movies={trendingMovies} />
+          <Banner movies={trendingData?.results} />
           <MoviesContainer>
             <CardList
               category="熱門電影"
-              data={trendingMovies}
+              data={trendingData?.results}
               isEvenRow={false}
               isOneRow={false}
             />
             <CardList
               category="Netflix原創電影"
-              data={netflixOriginalsMovies}
+              data={netflixOriginalsData?.results}
               isEvenRow={true}
               isOneRow={false}
             />
             <CardList
               category="排行榜"
-              data={topRatedMovies}
+              data={topRatedData?.results}
               isEvenRow={false}
               isOneRow={false}
             />
             <CardList
               category="動作電影"
-              data={actionMovies}
+              data={actionData?.results}
               isEvenRow={true}
               isOneRow={false}
             />
             <CardList
               category="喜劇電影"
-              data={comedyMovies}
+              data={comedyData?.results}
               isEvenRow={false}
               isOneRow={false}
             />
             <CardList
               category="恐怖電影"
-              data={horrorMovies}
+              data={horrorData?.results}
               isEvenRow={true}
               isOneRow={false}
             />
             <CardList
               category="愛情電影"
-              data={romanceMovies}
+              data={romanceData?.results}
               isEvenRow={false}
               isOneRow={false}
             />
             <CardList
               category="紀錄片"
-              data={documentariesMovies}
+              data={documentariesData?.results}
               isEvenRow={true}
               isOneRow={false}
             />

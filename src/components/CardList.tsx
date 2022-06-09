@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
-import { thumbnailUrl } from "../contents/movie"
+import { thumbnailUrl } from "../contents/movieUrl"
 import { MEDIA_QUERY_MD, MEDIA_QUERY_SM } from "../contents/style"
 import Card from "./card/Card"
 

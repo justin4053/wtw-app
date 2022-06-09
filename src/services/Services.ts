@@ -1,5 +1,5 @@
 import { createApi,fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { baseUrl } from '../contents/movie'
+import { baseUrl } from '../contents/movieUrl'
 import requests from "../utils/requests"
 
 export const moviesApi = createApi({

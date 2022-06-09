@@ -4,8 +4,9 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { ReactNode } from "react"
 import { BtnOutline, BtnSolid } from "../../../components/button/Button"
-import { thumbnailUrl } from "../../../contents/movie"
+import { thumbnailUrl } from "../../../contents/movieUrl"
 import { MEDIA_QUERY_MD, MEDIA_QUERY_SM } from "../../../contents/style"
+import { Link } from "react-router-dom"
 
 const Carousel = styled(Slider)`
   position: relative;
@@ -181,19 +182,16 @@ const BannerBtn = styled.div`
 `
 
 const BannerMoreInfo = styled(BtnOutline)`
-  &:hover {
-    transform: scale(1.05);
-  }
+  color: white;
 
   ${MEDIA_QUERY_SM} {
     display: none;
   }
 `
+
 const BannerAddToList = styled(BtnSolid)`
   margin-left: 22px;
-  &:hover {
-    transform: scale(1.05);
-  }
+
   ${MEDIA_QUERY_SM} {
     margin-left: 0px;
   }
@@ -216,7 +214,7 @@ const DotsUl = styled.ul`
 `
 
 const Banner = ({ movies }: any) => {
-  const selectMovies = movies.slice(0, 10)
+  const selectMovies = movies?.slice(0, 10)
   const settings = {
     dots: true,
     infinite: true,
@@ -239,9 +237,11 @@ const Banner = ({ movies }: any) => {
               <BannerInfo>
                 <BannerRating>{movie?.vote_average}</BannerRating>
                 <BannerTitle>{movie?.name || movie.title}</BannerTitle>
-                <BannerDesc>{movie.overview}</BannerDesc>
+                <BannerDesc>{movie?.overview}</BannerDesc>
                 <BannerBtn>
-                  <BannerMoreInfo>更多資訊</BannerMoreInfo>
+                  <Link to={`/detail/${movie?.id}`}>
+                    <BannerMoreInfo>更多資訊</BannerMoreInfo>
+                  </Link>
                   <BannerAddToList>加入片單</BannerAddToList>
                 </BannerBtn>
               </BannerInfo>

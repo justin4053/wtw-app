@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { MEDIA_QUERY_MD, MEDIA_QUERY_SM } from "../../contents/style"
 
@@ -94,9 +95,9 @@ const Menu = ({ position }: Props) => {
   return (
     <NavMenu position={position}>
       <div>
-        <a>
+        <Link to={`/search/movie`}>
           <span>電影</span>
-        </a>
+        </Link>
       </div>
       <div>
         <a>

@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { BasicBox } from "../../../components/Layout"
-import { thumbnailUrl } from "../../../contents/movie"
+import { thumbnailUrl } from "../../../contents/movieUrl"
 import { MEDIA_QUERY_MD } from "../../../contents/style"
 
 const CastBox = styled(BasicBox)`

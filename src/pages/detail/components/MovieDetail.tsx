@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { BtnSolid } from "../../../components/button/Button"
 import { BasicBox } from "../../../components/Layout"
 import { languagesTranslator } from "../../../contents/languages"
-import { thumbnailUrl } from "../../../contents/movie"
+import { thumbnailUrl } from "../../../contents/movieUrl"
 import { MEDIA_QUERY_MD, MEDIA_QUERY_SM } from "../../../contents/style"
 
 // Interface
