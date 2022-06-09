@@ -18,6 +18,9 @@ const requests = {
     ),
     fetchMovieCastAndCrewById: (id: string) => (
         `movie/${id}/credits?api_key=${API_KEY}&language=zh-TW`
+    ),
+    fetchMoviesByParams: (genre: number,year: number,value: number) => (
+        `discover/movie?api_key=${API_KEY}&language=zh-TW&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=${year === 0 ? "" : year}&vote_average.gte=${value}&with_genres=${genre === 0 ? "" : genre}&with_watch_monetization_types=flatrate`
     )
 }
 

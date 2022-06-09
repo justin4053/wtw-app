@@ -100,9 +100,9 @@ const Menu = ({ position }: Props) => {
         </Link>
       </div>
       <div>
-        <a>
+        <Link to={`/search/drama`}>
           <span>戲劇</span>
-        </a>
+        </Link>
       </div>
       <div>
         <a>

@@ -18,6 +18,7 @@ const CardWrap = styled.div<{ isSamllPic: boolean }>`
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 152px;
 
   p {
     font-family: "Noto Sans TC";

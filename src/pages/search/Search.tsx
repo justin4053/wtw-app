@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { MainContainer } from "../../components/Layout"
 import { MEDIA_QUERY_MD, MEDIA_QUERY_SM } from "../../contents/style"
 import SearchBlock from "./components/SearchBlock"
+import SearchCards from "./components/SearchCards"
 
 const Container = styled(MainContainer)`
   margin-top: 82px;
