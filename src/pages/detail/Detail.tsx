@@ -153,7 +153,7 @@ const Detail = () => {
             <CardList
               category="相關影片"
               // TODO: 之後資料要串回相關影片 用Search ById
-              data={trendingData?.results}
+              data={trendingData}
               isEvenRow={true}
               isOneRow={true}
             />

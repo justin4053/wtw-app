@@ -11,42 +11,42 @@ export const moviesApi = createApi({
         getTrending: builder.query<any,void>({
             query: () => {
                 return requests.fetchTrending
-            }
+            },transformResponse: (res: any) => res.results
         }),
         getNetflixOriginals: builder.query<any,void>({
             query: () => {
                 return requests.fetchNetflixOriginals
-            }
+            },transformResponse: (res: any) => res.results
         }),
         getTopRated: builder.query<any,void>({
             query: () => {
                 return requests.fetchTopRated
-            }
+            },transformResponse: (res: any) => res.results
         }),
         getAction: builder.query<any,void>({
             query: () => {
                 return requests.fetchActionMovies
-            }
+            },transformResponse: (res: any) => res.results
         }),
         getComedy: builder.query<any,void>({
             query: () => {
                 return requests.fetchComedyMovies
-            }
+            },transformResponse: (res: any) => res.results
         }),
         getHorror: builder.query<any,void>({
             query: () => {
                 return requests.fetchHorrorMovies
-            }
+            },transformResponse: (res: any) => res.results
         }),
         getRomance: builder.query<any,void>({
             query: () => {
                 return requests.fetchRomanceMovies
-            }
+            },transformResponse: (res: any) => res.results
         }),
         getDocumentaries: builder.query<any,void>({
             query: () => {
                 return requests.fetchDocumentaries
-            }
+            },transformResponse: (res: any) => res.results
         }),
         getMovieStreamsById: builder.query<string,string>({
             query: (id) => {

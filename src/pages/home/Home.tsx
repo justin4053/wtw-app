@@ -47,66 +47,61 @@ export const Home = () => {
   const { data: horrorData } = useGetHorrorQuery()
   const { data: romanceData } = useGetRomanceQuery()
   const { data: documentariesData, isLoading } = useGetDocumentariesQuery()
-
-  useEffect(() => {}, [isLoading])
+  if (isLoading) return <></>
   return (
-    <>
-      {!isLoading && (
-        <Container>
-          <Banner movies={trendingData?.results} />
-          <MoviesContainer>
-            <CardList
-              category="熱門電影"
-              data={trendingData?.results}
-              isEvenRow={false}
-              isOneRow={false}
-            />
-            <CardList
-              category="Netflix原創電影"
-              data={netflixOriginalsData?.results}
-              isEvenRow={true}
-              isOneRow={false}
-            />
-            <CardList
-              category="排行榜"
-              data={topRatedData?.results}
-              isEvenRow={false}
-              isOneRow={false}
-            />
-            <CardList
-              category="動作電影"
-              data={actionData?.results}
-              isEvenRow={true}
-              isOneRow={false}
-            />
-            <CardList
-              category="喜劇電影"
-              data={comedyData?.results}
-              isEvenRow={false}
-              isOneRow={false}
-            />
-            <CardList
-              category="恐怖電影"
-              data={horrorData?.results}
-              isEvenRow={true}
-              isOneRow={false}
-            />
-            <CardList
-              category="愛情電影"
-              data={romanceData?.results}
-              isEvenRow={false}
-              isOneRow={false}
-            />
-            <CardList
-              category="紀錄片"
-              data={documentariesData?.results}
-              isEvenRow={true}
-              isOneRow={false}
-            />
-          </MoviesContainer>
-          <CopyRight>挖影 © Code:Justin Kuo / Drsign:K.T</CopyRight>
-        </Container>
-      )}
-    </>
+    <Container>
+      <Banner movies={trendingData} />
+      <MoviesContainer>
+        <CardList
+          category="熱門電影"
+          data={trendingData}
+          isEvenRow={false}
+          isOneRow={false}
+        />
+        <CardList
+          category="Netflix原創電影"
+          data={netflixOriginalsData}
+          isEvenRow={true}
+          isOneRow={false}
+        />
+        <CardList
+          category="排行榜"
+          data={topRatedData}
+          isEvenRow={false}
+          isOneRow={false}
+        />
+        <CardList
+          category="動作電影"
+          data={actionData}
+          isEvenRow={true}
+          isOneRow={false}
+        />
+        <CardList
+          category="喜劇電影"
+          data={comedyData}
+          isEvenRow={false}
+          isOneRow={false}
+        />
+        <CardList
+          category="恐怖電影"
+          data={horrorData}
+          isEvenRow={true}
+          isOneRow={false}
+        />
+        <CardList
+          category="愛情電影"
+          data={romanceData}
+          isEvenRow={false}
+          isOneRow={false}
+        />
+        <CardList
+          category="紀錄片"
+          data={documentariesData}
+          isEvenRow={true}
+          isOneRow={false}
+        />
+      </MoviesContainer>
+      <CopyRight>挖影 © Code:Justin Kuo / Drsign:K.T</CopyRight>
+    </Container>
   )
 }
